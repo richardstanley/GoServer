@@ -19,13 +19,13 @@ func fetch(w http.ResponseWriter, r *http.Request) {
   }
 
   defer resp.Body.Close()
-  body, err := ioutil.ReadAll(resp.Body)
+  content, err := ioutil.ReadAll(resp.Body)
 
   if err != nil{
     fmt.Println(err)
   }
 
-  fmt.Println("%s\n", string(body))
+  fmt.Println("%s\n", string(content))
 
 }
 
