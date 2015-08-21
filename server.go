@@ -7,8 +7,8 @@ import (
   "io/ioutil"
 )
 
-func hello(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "Hello world!")
+func handler(w http.ResponseWriter, r *http.Request) {
+  http.ServeFile(w, r, "./client")
 }
 
 func fetch(w http.ResponseWriter, r *http.Request) {
@@ -38,7 +38,7 @@ func main() {
   }
 
   mux = make(map[string]func(http.ResponseWriter, *http.Request))
-  mux["/"] = hello
+  mux["/"] = handler
   mux["/fetch"] = fetch
 
   fmt.Println("Server is up")
